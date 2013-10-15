@@ -89,7 +89,9 @@ module.exports = function(grunt) {
                      'copy:prepare',
                      'transpile',
                      'jshint',
-                     'concat_sourcemap'
+                     'concat_sourcemap',
+                     'concat:conductor',
+                     'jsframe'
                      ]));
 
   grunt.registerTask('build:styles', filterAvailable([
@@ -148,6 +150,14 @@ module.exports = function(grunt) {
                      ['build:debug', 'connect:server', 'watch:main']);
   grunt.registerTask('server:dist', "Build and preview production (minified) assets.",
                      ['build:dist', 'connect:dist:keepalive']);
+
+  grunt.registerTask("jsframe", function(){
+    var fs = require('fs'),
+        jsf = require('jsframe'),
+        out = fs.openSync('tmp/public/vendor/conductor.js.html', 'w');
+
+    jsf.process('tmp/conductor.js', out);
+  });
 
   grunt.initConfig(config);
 };
