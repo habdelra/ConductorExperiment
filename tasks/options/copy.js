@@ -15,6 +15,12 @@ module.exports = {
       cwd: 'tests/',
       src: ['**/*.js', '!test_helper.js', '!test_loader.js', '!vendor/**/*.js'],
       dest: 'tmp/javascript/tests/'
+    },
+    {
+      expand: true,
+      cwd: 'cards/',
+      src: ['**/*.js'],
+      dest: 'tmp/public/cards/'
     }]
   },
   // Stage moves files to their final destinations after the rest
