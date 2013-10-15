@@ -19,7 +19,7 @@ module.exports = {
     {
       expand: true,
       cwd: 'cards/',
-      src: ['**/*.js'],
+      src: ['**/*.js', '**/*.css'],
       dest: 'tmp/public/cards/'
     }]
   },
