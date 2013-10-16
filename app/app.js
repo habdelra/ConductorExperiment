@@ -1,5 +1,6 @@
 import Resolver from 'resolver';
 import registerComponents from 'appkit/utils/register_components';
+import HelloService from 'appkit/services/hello';
 
 var App = Ember.Application.extend({
   LOG_ACTIVE_GENERATION: true,
@@ -18,5 +19,15 @@ App.initializer({
   }
 });
 
+App.initializer({
+  name: 'Service Initializers',
+  initialize: function(container, application) {
+    var conductor = new Conductor({
+      conductorURL: '/vendor/conductor.js.html'
+    });
+    application.register('conductor:main', conductor,  {instantiate: false});
+    conductor.services.hello = HelloService;
+  }
+});
 
 export default App;

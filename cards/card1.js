@@ -4,6 +4,9 @@ Conductor.requireCSS('/cards/card1.css');
 Conductor.card({
 
 
+	consumers : {
+		hello: Conductor.Oasis.Consumer
+	},
 
 	metadata : {
 		test : function(){
@@ -21,6 +24,11 @@ Conductor.card({
 	render: function(intent, dimensions) {
 		var that = this,
 			$container = this.getContainerDiv();
+
+		this.consumers.hello.request('hi').then(function(response) {
+			$container.append($('<div/>').text(response));
+		});
+
 
 		//$body.text('hello world!');
 		if (this.data && this.data.person && this.data.person.name) $container.append($('<div/>').text('render: ' + this.data.person.name));
