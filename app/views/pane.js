@@ -23,7 +23,7 @@ var PaneView = Ember.View.extend({
 			}
 		});
 
-		var card = conductor.load(url, id, {capabilities: ['hello']});
+		var card = conductor.load(url, id, {capabilities: ['hello', 'person']});
 
 		card.appendTo(this.get('element')).
             then(function(card) {

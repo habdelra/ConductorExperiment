@@ -5,7 +5,12 @@ Conductor.card({
 
 
 	consumers : {
-		hello: Conductor.Oasis.Consumer
+		hello: Conductor.Oasis.Consumer,
+		person: Conductor.Oasis.Consumer.extend({
+			byEmail: function(email){
+				return this.request('findByEmail', email);
+			}
+		})
 	},
 
 	metadata : {
@@ -27,6 +32,10 @@ Conductor.card({
 
 		this.consumers.hello.request('hi').then(function(response) {
 			$container.append($('<div/>').text(response));
+		});
+
+		this.consumers.person.byEmail('hassan.abdelrahman@mhelabs.com').then(function(response) {
+			$container.append($('<div/>').text('findByEmailService: ' + ' ' + response.firstName + ' ' + response.lastName));
 		});
 
 
