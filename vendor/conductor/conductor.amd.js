@@ -792,11 +792,11 @@ define("conductor/height_service",
               width = Math.min(data.width, maxWidth),
               height = Math.min(data.height, maxHeight);
 
-          // gut the height service:
-          // el.style.width = width + "px";
-          // el.style.height = height + "px";
+          //gut the height service:
+          el.style.width = width + "px";
+          el.style.height = height + "px";
 
-          // el.trigger('resize', { width: width, height: height });
+          el.trigger('resize', { width: width, height: height });
         }
       }
     });
