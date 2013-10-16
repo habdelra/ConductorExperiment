@@ -39,11 +39,14 @@ var PaneView = Ember.View.extend({
               return card;
           }).fail(Ember.RSVP.rethrow);
 
-       
+        card.wiretap(function(service, msgEvt){
+            console.log("wiretap : ", service , msgEvt);
+        });
 
         
 
 	}
+
 
 });
 
