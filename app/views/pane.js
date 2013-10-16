@@ -30,9 +30,18 @@ var PaneView = Ember.View.extend({
 		card.appendTo(this.get('element')).
             then(function(card) {
               card.render();
+
+                //card needs to be activated before we can get metadata. which it will be by the time the appendTo promise resolves
+                card.metadataFor('test').then(function(metadata) {
+                    console.log('metadata.foo:' + metadata.foo);
+                });
+
               return card;
-          }).
-        fail(Ember.RSVP.rethrow);
+          }).fail(Ember.RSVP.rethrow);
+
+       
+
+        
 
 	}
 

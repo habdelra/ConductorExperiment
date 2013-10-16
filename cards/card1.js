@@ -3,6 +3,14 @@ Conductor.requireCSS('/cards/card1.css');
 
 Conductor.card({
 
+	metadata : {
+		test : function(){
+			return {
+				foo: 'bar'
+			};
+		}
+	},
+
 	activate: function() {
 	},
 
@@ -14,7 +22,7 @@ Conductor.card({
 			var responseObj = JSON.parse(responseBody);
 			$body.append($('<div/>').text(responseObj.name));
 		}, function(err){
-			console.log(err);
+			//console.log(err);
 		});
 
 	},
